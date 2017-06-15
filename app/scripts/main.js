@@ -1,1 +1,3 @@
-console.log('\'Allo \'Allo!');
+$(".carousel").carousel();
+$(".carousel-books-xs").carousel();
+$(".carousel-books-md").carousel();

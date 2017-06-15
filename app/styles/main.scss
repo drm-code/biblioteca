@@ -3,94 +3,6 @@ $icon-font-path: '../fonts/';
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
 
-// .browserupgrade {
-//   margin: 0.2em 0;
-//   background: #ccc;
-//   color: #000;
-//   padding: 0.2em 0;
-// }
-//
-// /* Space out content a bit */
-// body {
-//   // padding-top: 20px;
-//   // padding-bottom: 20px;
-// }
-//
-// /* Everything but the jumbotron gets side spacing for mobile first views */
-// .header,
-// .marketing,
-// .footer {
-//   padding-right: 15px;
-//   padding-left: 15px;
-// }
-//
-// /* Custom page header */
-// .header {
-//   padding-bottom: 20px;
-//   border-bottom: 1px solid #e5e5e5;
-// }
-//
-// /* Make the masthead heading the same height as the navigation */
-// .header h3 {
-//   margin-top: 0;
-//   margin-bottom: 0;
-//   line-height: 40px;
-// }
-//
-// /* Custom page footer */
-// .footer {
-//   padding-top: 19px;
-//   color: #777;
-//   border-top: 1px solid #e5e5e5;
-// }
-//
-// /* Customize container */
-// @media (min-width: 768px) {
-//   .container {
-//     max-width: 730px;
-//   }
-// }
-// .container-narrow > hr {
-//   margin: 30px 0;
-// }
-//
-// /* Main marketing message and sign up button */
-// .jumbotron {
-//   text-align: center;
-//   border-bottom: 1px solid #e5e5e5;
-// }
-// .jumbotron .btn {
-//   padding: 14px 24px;
-//   font-size: 21px;
-// }
-//
-// /* Supporting marketing content */
-// .marketing {
-//   margin: 40px 0;
-// }
-// .marketing p + h4 {
-//   margin-top: 28px;
-// }
-//
-// /* Responsive: Portrait tablets and up */
-// @media screen and (min-width: 768px) {
-//   /* Remove the padding we set earlier */
-//   .header,
-//   .marketing,
-//   .footer {
-//     padding-right: 0;
-//     padding-left: 0;
-//   }
-//   /* Space out the masthead */
-//   .header {
-//     margin-bottom: 30px;
-//   }
-//   /* Remove the bottom border on the jumbotron for visual effect */
-//   .jumbotron {
-//     border-bottom: 0;
-//   }
-// }
-
 $white:      #ffffff !default;
 $black:      #000000 !default;
 $dark:       #2f1b41 !default;
@@ -99,6 +11,14 @@ $bright:     #bd3144 !default;
 $accent:     #ef5941 !default;
 $text:       #212121 !default;
 $secondary:  #757575 !default;
+$hover:      10%     !default;
+$smd:        768px   !default;
+$mdd:        992px   !default;
+$lgd:        1200px  !default;
+
+body {
+  font-family: 'Roboto Condensed', sans-serif;
+}
 
 .navbar {
   background-color: $white;
@@ -119,6 +39,51 @@ $secondary:  #757575 !default;
       background-color: transparent;
     }
   }
+  @media (min-width: $smd) {
+    background-color: $dark;
+    border-bottom: none;
+  }
+}
+.navbar--sm {
+  height: 100px;
+  // border-bottom: none;
+  .navbar-brand {
+    padding: 15px;
+    img {
+      height: 70px;
+    }
+  }
+  @media (min-width: $smd) {
+    background-color: $white;
+  }
+}
+.navbar-default {
+  .navbar-nav {
+    > .active {
+      > a {
+        color: $accent;
+        border-bottom: 5px solid $white;
+        background-color: transparent;
+        &:hover, &:focus {
+          background-color: $accent;
+          color: $white;
+        }
+      }
+    }
+    > li {
+      > a {
+        color: $text;
+        border-bottom: 5px solid transparent;
+        &:hover, &:focus {
+          background-color: $accent;
+          color: $white;
+        }
+        @media (min-width: $smd) {
+          color: $white;
+        }
+      }
+    }
+  }
 }
 
 .slider {}
@@ -127,7 +92,9 @@ $secondary:  #757575 !default;
   background-color: $primary;
   color: $white;
 }
-.slider__caption {}
+.slider__caption {
+  margin-top: 0px;
+}
 .slider__caption--big {
   text-transform: uppercase;
   font-weight: bold;
@@ -143,22 +110,171 @@ $secondary:  #757575 !default;
   font-size: 1.5em;
 }
 
-.section {}
+.section {
+  padding: 60px 15px;
+  @media (min-width: $smd) {
+    padding: 60px 10%;
+  }
+}
 .section__title {
   color: $primary;
   border-bottom: 2px solid $primary;
+  margin-top: 0px;
   margin-bottom: 30px;
+  padding-left: 6px;
+  padding-bottom: 6px;
+}
+.section__title--books {
+  color: $white;
+  border-bottom-color: $white;
+}
+.section--books {
+  background-color: $bright;
 }
 
-.events {
-  > div {
-    margin-bottom: 50px;
-  }
+.events {}
+.events__title {
+  margin-bottom: 20px;
 }
 .events__title--event {
-  font-weight: bold;
+  font-family: 'Roboto Condensed Bold', sans-serif;
+  @media (min-width: $smd) {
+    &:not(.events__title--first) {
+      margin-top: 0px;
+    }
+  }
+}
+.events__title--news {
+  margin-top: 20px !important;
 }
 .events__content {
   font-size: 1.3em;
   color: $secondary;
+}
+.events-container {
+  margin-bottom: 30px;
+}
+
+.books {
+  background-color: $bright;
+}
+.books-container {
+  background-color: $dark;
+  padding: 10px;
+  color: $white;
+}
+.books-container__title {
+  font-family: 'Roboto Condensed Bold', sans-serif;
+}
+
+.rooms {}
+.rooms__title {
+  padding: 10px;
+  background-color: $dark;
+  color: $white;
+  margin-top: 0px;
+  margin-bottom: 30px;
+}
+
+.btn {
+  width: 250px;
+  @media (min-width: $smd) {
+    width: 300px
+  }
+}
+.btn-lg {
+  font-size: 2em;
+}
+.btn--accent {
+  background-color: $accent;
+  color: $white;
+  &:hover, &:focus {
+    color: darken($white, $hover);
+    background-color: darken($accent, $hover);
+  }
+}
+
+.carousel-caption {
+  position: relative;
+  background-color: $primary;
+  left: 0px;
+  bottom: 0px;
+  text-align: left;
+  padding: 20px;
+  @media (min-width: $smd) {
+    padding: 20px;
+    position: absolute;
+    width: 450px;
+    left: 10%;
+    bottom: 10%;
+  }
+  @media (min-width: $mdd) {
+    padding: 20px;
+    bottom: 20%;
+  }
+  @media (min-width: $lgd) {
+    padding: 20px;
+    bottom: 30%;
+  }
+}
+.carousel-control {
+  &.left.left--books, &.right.right--books {
+    background-image: none;
+    position: relative;
+    top: 30px;
+  }
+  &.left.left--books {
+    left: calc(50% - 105px);
+  }
+  &.right.right--books {
+    left: calc(50% - 55px)
+  }
+}
+
+.news {
+  .row:last-child {
+    margin-top: 50px;
+  }
+}
+
+.footer {
+  padding: 20px;
+  background-color: $primary;
+  color: $white;
+  .footer-brand {
+    img {
+      height: 40px;
+    }
+  }
+  @media (min-width: $smd) {
+    padding: 30px 10%;
+  }
+}
+.footer__brand-text {
+  display: block;
+}
+.footer__brand--first {
+  margin-top: 20px;
+}
+.footer__menu {
+  float: right;
+  padding-left: 0px;
+  > li {
+    display: inline;
+    float: left;
+    padding-right: 30px;
+    float: left;
+    > ul {
+      padding-left: 0;
+      margin-top: 10px;
+      list-style: none;
+    }
+  }
+  a {
+    color: $white;
+  }
+}
+
+.img-responsive {
+  width: 100%;
 }
